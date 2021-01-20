@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+import Header from "./components/Header";
+import Dialog from "./components/Dialog";
+import Sender from "./components/Sender";
+
+import { AppContext } from "./context";
+import { getTheme, setTheme } from "./helpers/theme";
+
+const App = () => {
+    const [message, addMessage] = useState(null);
+    const [theme, toggleTheme] = useState(getTheme());
+
+    useEffect(() => {
+        setTheme(theme)
+    }, [theme]);
+
+    return (
+        <AppContext.Provider
+            value={{
+                theme,
+                toggleTheme,
+            }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          <div className="container">
+              <Header />
+              <Dialog newMessage={message}/>
+              <Sender onAddMessage={addMessage}/>
+          </div>
+        </AppContext.Provider>
+    );
 }
 
 export default App;
