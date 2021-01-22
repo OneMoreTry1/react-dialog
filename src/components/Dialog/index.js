@@ -46,7 +46,7 @@ const Dialog = ({ newMessage }) => {
       });
     };
 
-    const normalizedDialog = normalizeDialog(data);
+    const normalizedDialog = normalizeDialog(state.messages);
 
     return (
         <div className="dialog">
