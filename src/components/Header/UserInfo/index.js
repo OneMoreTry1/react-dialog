@@ -4,7 +4,7 @@ import "./styles.css";
 
 const UserInfo = () => (
     <div className="user-info">
-        <div className="name">Ilezus Dev</div>
+        <div className="name">Mark Zuckerberg</div>
         <div className="status">
             <span className="circle"/> В сети
         </div>
